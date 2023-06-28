@@ -1,0 +1,158 @@
+/*  Unidades relativas: poner contenedores en porcentaje SIEMPRE, y asi es igual para todas las pantallas
+Unidades absolutas: se ponen pixeles pero no toma en cuenta el tamaño de la pantalla
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-top: 5rem;
+}
+
+/* ------------Estilos Generales------------ */
+
+/* Necesitamos tener el contenedor en general, por eso hacemos la seccion de container*/
+.container {
+    width: 80%;
+    max-width: 1440px;
+    /* Se usa max width para que se comporte igual en pantallas que superan los 1440px */
+    margin: 2rem auto;
+    /* Aqui se pone auto, porque va a buscar automaticamente el porcentaje para acompletar el 100% */
+
+}
+
+
+/* Necesitamos identificar el elemento padre que es la fila o el contenedor, y si a este le agregamos columnas, agregamos la etiqueta "row"(columnas) */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Display flex cambia la hilera a fila | Align items nos ayuda a centrar los elementos | gap es para la separacion entre columnas y siempre debe de escribirse en el elemento padre, nos resuelve la vida */
+
+/* Necesitamos ahora darle el mismo porcentaje a cada columna, por eso creamos la clase col y lo ponemos en aside */
+.col {
+    flex-basis: 33.33%;
+}
+
+/* Flexbasis es solo apara cuando es un elemento hijo de el elemento que tiene displayflex para distribuir a un porcentaje */
+
+/* Necesitamos separar la columna central en dos, para eso creamos una clase llamada "direction-column"*/
+.direction-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Usamos display flex, cambiamos la direccion que esta por defecto de row a column, y solo asi podemos aplicar el espaciado entre los dos elementos con gap */
+
+
+
+/* ------------Estilos Especificos------------ */
+
+
+
+/* Estos son los estilos que no seran reutilizables, entonces analizamos el diseño de la carta y posterior a esto asignamos los espacios al titulo, articulo e imagen  */
+
+
+/* Vamos a hacer el espaciado general dentro de las cards */
+.container article {
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.container article p {
+    padding: 1rem 0 4rem;
+}
+
+/* Surge el problema de alinear la imagen a la derecha, tenemos que incluirla en una etiqueta que sea de tipo bloque (div) y despues aplicar las propiedades necesarias */
+.container article div {
+    text-align: right;
+}
+
+.container article div img {
+    vertical-align: middle;
+    width: 80px;
+}
+
+/* ------------Colores------------ */
+
+.card-1 {
+    border-top: 6px solid hsl(180, 62%, 55%);
+}
+
+.card-2 {
+    border-top: 6px solid hsl(0, 78%, 62%);
+}
+
+.card-3 {
+    border-top: 6px solid hsl(34, 97%, 64%);
+}
+
+.card-4 {
+    border-top: 6px solid hsl(212, 97%, 64%);
+}
+
+/* ------------Otros elementos------------ */
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* ------------Responsive------------ */
+
+/* Mediaquerries -> Breackpoint */
+
+
+/* tablet */
+@media screen and (max-width: 1200px) {
+
+
+    .container {
+        width: 70%;
+    }
+
+    .row {
+        flex-wrap: wrap;
+    }
+/* Usamos esta propiedad para las cards no quepan juntas por que estan al 100% y se tengam que pasar hacia abajo  */
+
+    .col {
+        flex-basis: 100%;
+    }
+}
+/* No es necesario reescribir todas las propiedades, en este caso solo las de orientacion el flex */
+
+
+/* movil */
+@media screen and (max-width: 640px) {
+    body {
+        background: rgb(190, 229, 237);}
+
+        .container {
+            width: 80%;
+        }
+    
+        .row {
+            flex-wrap: wrap;
+        }
+    
+        .col {
+            flex-basis: 100%;
+        }
+    }
+    /* No es necesario reescribir todas las propiedades, en este caso solo las de orientacion el flex */
